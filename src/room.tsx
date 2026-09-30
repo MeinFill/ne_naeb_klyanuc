@@ -125,7 +125,7 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
     const intervalId = window.setInterval(() => {
       loadRoomPlayers()
       loadChoosenCountries()
-    }, 1)
+    }, 100)
     return () => {
       isMounted = false
       window.clearInterval(intervalId)
