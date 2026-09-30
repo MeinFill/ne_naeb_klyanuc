@@ -1,0 +1,175 @@
+.roomPage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 15vh 85vh;
+  color: #d8dde1;
+}
+
+.roomHeader {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: #374044;
+}
+
+.roomHeader h1 {
+  margin: 0;
+  color: #d8dde1;
+}
+
+.roomMain {
+  display: grid;
+  grid-template-columns: 15fr 70fr 15fr;
+  min-height: 0;
+}
+
+.roomSide,
+.roomCenter {
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #504747;
+}
+
+.roomSide {
+  background: #374044;
+}
+
+.roomSide h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.roomPlayersList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roomPlayersList li {
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #151b21;
+}
+
+.roomPlayerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.roomPlayerCard span {
+  color: #c0bfbf;
+  font-size: 14px;
+}
+
+.roomCenter {
+  background: #151b21;
+  overflow-y: auto;
+}
+
+.countryButtons {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.countryButton {
+  min-height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: #374044;
+  color: #d8dde1;
+  cursor: pointer;
+}
+
+.countryButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(50%);
+}
+
+.startButton {
+  font-size: 25px;
+  padding: 15px;
+  cursor: pointer;
+  background:#13a713;
+  color: #d8dde1;
+  border: none;
+  border-radius: 15px;
+}
+
+.cancelButton {
+  margin-left: 50px;
+  font-size: 25px;
+  padding: 15px;
+  cursor: pointer;
+  background:#f1451a;
+  color: #d8dde1;
+  border: none;
+  border-radius: 15px;
+}
+
+.chooseCommandWindow {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgb(0 0 0 / 60%);
+}
+
+.chooseCommandWindow.choosen {
+  display: none;
+}
+
+.chooseCommandContainer {
+  font-size: 30px;
+  background: #374044;
+  color: #c0bfbf;
+  padding: 50px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.chooseButtons {
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.chosenButton {
+  font-size: 30px;
+  color: #c0bfbf;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.chosenButton:hover {
+  transform: translateY(-4px);
+}
+
+.green {
+  background: #1c630a;
+}
+
+.red {
+  background: #af0e09;
+}
+
+.SUCK {
+  margin: 0;
+}

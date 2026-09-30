@@ -1,0 +1,192 @@
+.lobbi {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: column;
+  width: 50%;
+}
+
+.playerCard {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  background: #374044;
+  gap: 50px;
+  padding: 10px 40px;
+  border: 1px solid #504747;
+  border-radius: 20px;
+}
+
+.playerSetting {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  color: #c0bfbf;
+}
+
+input {
+  height: 25px;
+  background: #151b21;
+  width: 80%;
+  border: none;
+  outline: none;
+  color: #d8dde1;
+  padding: 10px;
+  border-radius: 10px;
+
+  font: inherit;
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+  color: #d8dde1;
+  margin-top: 100px;
+}
+
+.roomsCard {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  padding: 50px 25px;
+  gap: 50px;
+  font-size: 25px;
+  background: #374044;
+  border-radius: 20px;
+}
+
+.roomCard {
+  color: #c0bfbf;
+  display: flex;
+  justify-content: space-around;
+  background:#151b21;
+  border-radius: 20px;
+  transition: transform 0.2s ease;
+}
+
+.roomCard:hover {
+  transform: translateY(-4px);
+}
+
+.enterButton {
+  background: #4c944f;
+  border: none;
+  font-size: 25px;
+  margin: 10px 0;
+  border-radius: 10px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.createRoomWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.createRoom {
+  font-size: 25px;
+  background:#e23601;
+  color: #c0bfbf;
+  border: none;
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.createRoom:hover {
+  transform: translateY(-4px);
+}
+
+.createRoomWindow {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgb(0 0 0 / 60%);
+}
+
+.createRoomWindow.active {
+  display: flex;
+}
+
+.createRoomContainer {
+  padding: 30px 50px;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background: #374044;
+  color: #c0bfbf;
+  border-radius: 30px;
+}
+
+.commandsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.gameModeContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.gameModeButtonsContainer {
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.gameModeButton {
+  width: 100%;
+  padding: 10px 30px;
+  border-radius: 10px;
+  font-size: 20px;
+  border: none;
+  background: #151b21;
+  color: #c0bfbf;
+  cursor: pointer;
+}
+
+.clicked {
+  background: #fc0909;
+}
+
+.createRoomButtons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+}
+
+.createRoomButton {
+  padding: 10px 0px;
+  font-size: 25px;
+  width: 50%;
+  border: none;
+  border-radius: 10px;
+  color: #c0bfbf;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background: #3e8f4e;
+}
+
+.createRoomButton:hover {
+  transform: translateY(-4px);
+}
+
+.cancel {
+  background: #e23601;
+}

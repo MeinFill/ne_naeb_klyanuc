@@ -1,0 +1,12 @@
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #16171A;
+  display: flex;
+  justify-content: center;
+}
