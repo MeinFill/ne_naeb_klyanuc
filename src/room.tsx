@@ -25,6 +25,7 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
   const [roomPlayers, setRoomPlayers] = useState<RoomPlayer[]>([])
   const [choosenCountries, setChoosenCountries] = useState<number[]>([])
   const [choosenTick, setChoosenTick] = useState<number>(1)
+  const [isStarted, setIsStarted] = useState<number>(0)
 
   useEffect(() => {
     let isMounted = true
@@ -94,31 +95,31 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
         .from('players')
         .select('countries, banned')
         .eq('room', roomId)
+      if (error) {
+        console.error(error)
+        return []
+      }
 
-        if (error) {
-          console.error(error)
-          return []
-        }
-
-        const result: number[] = []
-
-        for (const player of players) {
-          for (const field of [player.countries, player.banned]) {
-            if (!field) continue
+      const result: number[] = []
+      for (const player of players) {
+        for (const field of [player.countries, player.banned]) {
+          if (!field) continue
+        
+          // "1,2,3" → [1, 2, 3]
+          const ids = String(field)
+            .split(',')
+            .map(s => s.trim())
+            .filter(s => s !== '')
+            .map(Number)
+            .filter(n => !isNaN(n))
           
-            // "1,2,3" → [1, 2, 3]
-            const ids = String(field)
-              .split(',')
-              .map(s => s.trim())
-              .filter(s => s !== '')
-              .map(Number)
-              .filter(n => !isNaN(n))
-          
-            result.push(...ids)
-          }
+          console.log("efw")
+          console.log(ids)
+          if (ids) result.push(...ids)
         }
-      
-        setChoosenCountries([...new Set(result)])
+      }
+    
+      setChoosenCountries([...new Set(result)])
     }
 
     loadChoosenCountries()
@@ -126,7 +127,8 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
     loadRoomPlayers()
     const intervalId = window.setInterval(() => {
       loadRoomPlayers()
-    }, 2000)
+      loadChoosenCountries()
+    }, 100)
     return () => {
       isMounted = false
       window.clearInterval(intervalId)
@@ -138,6 +140,8 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
       .from('players')
       .update({ isActive: 1 })
       .eq('id', playerId)
+
+    setIsStarted(1)
   }
 
   const countryClick = async (country: number) => {
@@ -255,7 +259,7 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
         <h1>Комната №{roomId}</h1>
         {choosenTick === 1 ? <p>Выбирай страну, которую хочешь ЗАБАНИТЬ</p> : <p>Выбирай страну, которую хочешь ВЫБРАТЬ</p>}
         <div>
-          {isCreator == 1 && (<button className='startButton' onClick={startClick}>Начать</button>)}
+          {isCreator == 1 && (<button className={`startButton ${isStarted === 1 ? 'hidden' : ''}`} onClick={startClick}>Начать</button>)}
           <button className='cancelButton' onClick={onLeaveClick}>Вернуться в лобби</button>
         </div>
       </header>
