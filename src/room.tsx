@@ -171,6 +171,31 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
       }
 
       setChoosenTick(2)
+
+      const { data, error: getSecondPlayerError } = await supabase
+        .from('players')
+        .select('id')
+        .eq('room', roomId)
+        .neq('id', playerId)
+        .limit(1)
+        .maybeSingle()
+
+      if (getSecondPlayerError) {
+        console.error(error)
+        return
+      }
+
+      const secondPlayerId = data?.id ?? null
+
+      await supabase
+        .from('players')
+        .update({ isActive: 0 })
+        .eq('id', playerId)
+
+      await supabase
+      .from('players')
+      .update({ isActive: 1 })
+      .eq('id', secondPlayerId)
     }
     if (choosenTick === 2) {
       let current = ''
