@@ -112,9 +112,6 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
             .filter(s => s !== '')
             .map(Number)
             .filter(n => !isNaN(n))
-          
-          console.log("efw")
-          console.log(ids)
           if (ids) result.push(...ids)
         }
       }
@@ -128,7 +125,7 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
     const intervalId = window.setInterval(() => {
       loadRoomPlayers()
       loadChoosenCountries()
-    }, 100)
+    }, 1)
     return () => {
       isMounted = false
       window.clearInterval(intervalId)

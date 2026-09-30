@@ -167,10 +167,20 @@ function Lobbi({ onEnterRoom }: LobbiProps) {
       1
     )
 
-    await supabase
-    .from('rooms')
-    .update({ creatorId: playerId })
-    .eq('id', roomId)
+    const { data, error } = await supabase
+      .from('rooms')
+      .update({ creator: playerId })
+      .eq('id', roomId)
+      .select('id')
+
+    if (error) {
+      console.error('Ошибка обновления creatorId:', error.message, error.code)
+      return
+    }
+
+    if (!data || data.length === 0) {
+      console.warn('Строка не обновилась — возможно, roomId не существует или RLS блокирует')
+    }
 
     if (playerId !== null) {
       onEnterRoom(roomId, Number(playerId), 1)
