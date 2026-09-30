@@ -266,7 +266,12 @@ function Room({ roomId, playerId, isCreator, onLeave }: RoomProps) {
       .delete()
       .eq('id', playerId)
 
-    if (isCreator === 1) {
+    if (isCreator == 1) {
+      await supabase
+      .from('players')
+      .delete()
+      .eq('room', roomId)
+
       await supabase
         .from('rooms')
         .delete()
